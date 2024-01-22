@@ -22,17 +22,17 @@ const Navbar = () => {
       <ul className={expanded ? 'navbar open' : 'navbar'} onClick={toggleNavbar}>
         <li>
           <Link to="/">
-            <a className={location.pathname === '/' ? 'active' : ''}>Home</a>
+            <a href="/" className={location.pathname === '/' ? 'active' : ''}>Home</a>
           </Link>
         </li>
         <li>
           <Link to="/about">
-            <a className={location.pathname === '/about' ? 'active' : ''}>About us</a>
+            <a href="/about" className={location.pathname === '/about' ? 'active' : ''}>About us</a>
           </Link>
         </li>
         <li>
           <Link to="/services">
-            <a className={location.pathname === '/services' ? 'active' : ''}>Services</a>
+            <a  href="/services" className={location.pathname === '/services' ? 'active' : ''}>Services</a>
           </Link>
         </li>
         
