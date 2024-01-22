@@ -1,6 +1,6 @@
 import React from 'react';
 import '../style/Footer.css'; // Import your footer CSS file
-import { RiWhatsappLine, RiPhoneLine, RiInformationLine, RiUserAddLine, RiFileListLine } from 'react-icons/ri';
+import { RiWhatsappLine, RiPhoneLine, RiInformationLine, } from 'react-icons/ri';
 
 const Footer = () => {
   return (

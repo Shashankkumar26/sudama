@@ -50,7 +50,7 @@ const Home = () => {
       clearInterval(intervalForHomeImg);
       clearInterval(intervalForImageChange);
     };
-  }, [data.image.length, main.length]);
+  }, [data.image.length]);
 
   useEffect(() => {
     if (isHovered) {
