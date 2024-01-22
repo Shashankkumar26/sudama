@@ -23,16 +23,7 @@ const Footer = () => {
               <RiInformationLine className='logo'/> About Us
             </a>
           </li>
-          <li>
-            <a href="/register">
-              <RiUserAddLine className='logo'/> Register
-            </a>
-          </li>
-          <li>
-            <a href="/terms">
-              <RiFileListLine className='logo'/> Terms and Conditions
-            </a>
-          </li>
+       
         </ul>
       </div>
     </footer>
