@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import "../style/home.css";
-import { DiseaseList as List, main, testimonials } from "../disease/diseaseList";
+import {
+  DiseaseList as List,
+  main,
+  testimonials,
+} from "../disease/diseaseList";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -83,7 +87,7 @@ const Home = () => {
   return (
     <div className="body">
       <div className="img">
-        <img className="homeimag1" src={main[currentIndex]}  alt="" />
+        <img className="homeimag1" src={main[currentIndex]} alt="" />
       </div>
       <div className="icons">
         {main.map((m, index) => (
@@ -118,43 +122,47 @@ const Home = () => {
 
       <div className="disease-detail mt-3">
         <div>
-          {
-            List.map((data,index)=>(
-              <div className="pt-4">
+          {List.map((data, index) => (
+            <div className="pt-4" key={index}>
               <div className="flex justify-center mb-5">
-              <img className="disease-image" src={data.image[currentImageIndex]} alt="" />
-            </div>
-            <div>
-              <div className="dataname">
-                <div>
-                  <p>{data.name}</p>
+                <img
+                  className="disease-image"
+                  src={data.image[currentImageIndex]}
+                  alt=""
+                />
+              </div>
+              <div>
+                <div className="dataname">
+                  <div>
+                    <p>{data.name}</p>
+                  </div>
+                </div>
+                <div className="data-introduction">
+                  <p>
+                    {expanded
+                      ? data.introduction
+                      : data.introduction.slice(0, 800)}
+                  </p>
+                  {expanded ? (
+                    <>
+                      <h3>Cause</h3>
+                      <p>{data.cause}</p>
+                      <h3>Treatment</h3>
+                      <ul>
+                        {Object.keys(data.treatment).map((key) => (
+                          <li key={key}>{data.treatment[key]}</li>
+                        ))}
+                      </ul>
+                      <h4>{data.brief}</h4>
+                    </>
+                  ) : null}
+                  <button onClick={toggleExpand}>
+                    {expanded ? "Read Less" : "Read More"}
+                  </button>
                 </div>
               </div>
-              <div className="data-introduction">
-                <p>
-                  {expanded ? data.introduction : data.introduction.slice(0, 800)}
-                </p>
-                {expanded ? (
-                  <>
-                    <h3>Cause</h3>
-                    <p>{data.cause}</p>
-                    <h3>Treatment</h3>
-                    <ul>
-                      {Object.keys(data.treatment).map((key) => (
-                        <li key={key}>{data.treatment[key]}</li>
-                      ))}
-                    </ul>
-                    <h4>{data.brief}</h4>
-                  </>
-                ) : null}
-                <button onClick={toggleExpand}>
-                  {expanded ? "Read Less" : "Read More"}
-                </button>
-              </div>
             </div>
-            </div>
-            ))
-          }
+          ))}
         </div>
       </div>
 
