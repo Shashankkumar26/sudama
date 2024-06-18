@@ -11,8 +11,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
-  const typesD = ["Leucoderma/Vitiligo", "Psoriasis", "Acne"];
-  const [data, setData] = useState(List[0]);
+  const data= List[0];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -73,8 +72,6 @@ const Home = () => {
   const handleNextSlide = () => {
     sliderRef.current.slickNext();
   };
-
-  const currentImage = data.image[currentImageIndex];
 
   const touchEffect = (index) => {
     setCurrentIndex(index);

@@ -1,7 +1,4 @@
-// About.js
-
 import React from 'react';
-import img from '../images/background1.jpg';
 import '../style/About.css';
 
 const About = () => {
