@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - "*"
+      - "*" # Trigger on any branch
 
 jobs:
   build:
@@ -21,10 +21,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Run tests
+        run: npm test
+        env:
+          CI: true
+
       - name: Build project
         run: npm run build
 
       - name: Deploy to Netlify
+        if: success()
         uses: nwtgck/actions-netlify@v1.2.3
         with:
           publish-dir: ./build
@@ -32,3 +38,11 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Notify on failure
+        if: failure()
+        run: echo "Build or tests failed. Check the logs."
+
+      - name: Notify on success
+        if: success()
+        run: echo "Build and tests passed successfully."
