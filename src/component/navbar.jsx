@@ -1,7 +1,7 @@
-import React, { useState ,useEffect} from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import '../style/Navbar.css';
-import 'remixicon/fonts/remixicon.css';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import "../style/Navbar.css";
+import "remixicon/fonts/remixicon.css";
 
 const Navbar = () => {
   const location = useLocation();
@@ -10,39 +10,55 @@ const Navbar = () => {
   const toggleNavbar = () => {
     setExpanded(!expanded);
   };
-  useEffect(()=>{
+
+  useEffect(() => {
     setExpanded(false);
-  },[location])
+  }, [location]);
 
   return (
     <header>
       <a href="/" className="logo">
-        <i className="ri-home-heart-fill"></i> <span className="sudama">Sudama</span> <span className="Aush">Aushdhalya</span>
+        <i className="ri-home-heart-fill"></i>{" "}
+        <span className="sudama">Sudama</span>{" "}
+        <span className="Aush">Aushdhalya</span>
       </a>
-      <ul className={expanded ? 'navbar open' : 'navbar'} onClick={toggleNavbar}>
-        <li>
-          <Link to="/">
-            <a href="/" className={location.pathname === '/' ? 'active' : ''}>Home</a>
+      <ul className={expanded ? "navbar open" : "navbar"}>
+        <li onClick={toggleNavbar}>
+          <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+            Home
           </Link>
         </li>
-        <li>
-          <Link to="/about">
-            <a href="/about" className={location.pathname === '/about' ? 'active' : ''}>About us</a>
+        <li onClick={toggleNavbar}>
+          <Link
+            to="/about"
+            className={location.pathname === "/about" ? "active" : ""}
+          >
+            About us
           </Link>
         </li>
-        <li>
-          <Link to="/services">
-            <a  href="/services" className={location.pathname === '/services' ? 'active' : ''}>Services</a>
+        <li onClick={toggleNavbar}>
+          <Link
+            to="/services"
+            className={location.pathname === "/services" ? "active" : ""}
+          >
+            Services
           </Link>
         </li>
-        
+        <li className="phone-mobile">
+          <a href="tel:+919931618534" className="user">
+            <i className="ri-phone-line"></i>9931618534
+          </a>
+        </li>
       </ul>
       <ul className="main">
-        <a href="/tel:+919931618534" className="user">
-        <i class="ri-phone-line"></i>9931618534
-        </a>
-        
-        <i className="ri-menu-line" id="menu-icon" onClick={toggleNavbar}></i>
+        <li className="phone-desktop">
+          <a href="tel:+919931618534" className="user">
+            <i className="ri-phone-line"></i>9931618534
+          </a>
+        </li>
+        <li>
+          <i className="ri-menu-line" id="menu-icon" onClick={toggleNavbar}></i>
+        </li>
       </ul>
     </header>
   );
